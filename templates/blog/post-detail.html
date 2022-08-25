@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content%}
+
+<h2 style="d-flex; justify-content:center;"> {{ post.title }}</h2>
+<p> {{ post.content }}</p>
+{% include "blog/post-comments.html" %}
+{% endblock %}
