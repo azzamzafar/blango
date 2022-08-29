@@ -1,0 +1,34 @@
+[
+  {
+    "model": "blog.tag",
+    "pk": 2,
+    "fields": {"value": "test tag1"}
+  },
+  {"model": "blog.tag", "pk": 3, "fields": {"value": "test tag2"}
+  },
+  {"model": "blog.post", "pk": 1,
+  "fields": 
+    {"author": 1,
+    "created_at": "2022-08-29T10:20:50.840Z",
+    "modified_at": "2022-08-29T10:20:50.840Z",
+    "published_at": "2022-08-25T06:00:00Z",
+    "title": "Random Post1",
+    "slug": "random-post1",
+    "summary": "Summary for random post1",
+    "content": "This is the only model change we need to make. Remember the other models are related to the User model using settings.AUTH_USER_MODEL so we don’t actually need to change any of their foreign keys. But we do need to update that setting, as well as add blango_auth to INSTALLED_", "tags": [2]}
+    }, 
+  {"model": "blog.post", "pk": 2, 
+  "fields": 
+    {"author": 2,
+    "created_at": "2022-08-29T10:21:44.609Z",
+    "modified_at": "2022-08-29T10:21:44.609Z",
+    "published_at": "2022-08-29T10:21:08Z",
+    "title": "Random Post2",
+    "slug": "random-post2",
+    "summary": "Summary for random post 2",
+    "content": "This is the only model change we need to make. Remember the other models are related to the User model using settings.AUTH_USER_MODEL so we don’t actually need to change any of their foreign keys. But we do need to update that setting, as well as add blango_auth to INSTALLED_", "tags": [3]}
+    },
+{"model": "blango_auth.user", "pk": 1, 
+"fields": {"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$NU91eDlVR3Z5WUJBTTJlUU9KOVRpZA$TbUeOurIKEe0svkzh63RBQ", "last_login": "2022-08-29T10:18:32.482Z", "is_superuser": true, "username": "codio", "first_name": "", "last_name": "", "email": "learner@codio.com", "is_staff": true, "is_active": true, "date_joined": "2022-08-29T10:14:55.598Z", "groups": [], "user_permissions": []}
+},
+{"model": "blango_auth.user", "pk": 2, "fields": {"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$bkdMU2tGSktRS3ZxWnNyN0RUbU9qNg$evEmbQDo6EHJvx+C0MZlmw", "last_login": null, "is_superuser": true, "username": "GhostWriter", "first_name": "Ghost", "last_name": "Writer", "email": "writer@ghosttown.in", "is_staff": true, "is_active": true, "date_joined": "2022-08-29T10:16:26Z", "groups": [], "user_permissions": []}}]

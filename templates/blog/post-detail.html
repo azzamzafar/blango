@@ -3,5 +3,14 @@
 
 <h2 style="d-flex; justify-content:center;"> {{ post.title }}</h2>
 <p> {{ post.content }}</p>
+<hr>
+{% if post.author.profile %}
+ <div class="row">
+   <div class="col"
+      <strong> About the author </strong>
+      <p>{{ post.author.profile.bio }} </p>
+    </div>
+  </div>
+{% endif %}
 {% include "blog/post-comments.html" %}
 {% endblock %}
