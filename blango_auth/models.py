@@ -39,7 +39,7 @@ class User(AbstractUser):
     unique=True,
     max_length=128)
   
-  objects = ...
+  objects = BlangoUserManager()
   
   USERNAME_FIELD = "email"
   REQUIRED_FIELDS=[]

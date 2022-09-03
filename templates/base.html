@@ -9,7 +9,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"> Literary Blog </a>
+    <a class="navbar-brand" href="{% url 'index' %}"> Literary Blog </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,8 +24,33 @@
         <li class="nav-item">
           <a class="nav-link active" href="#">Writers</a>
         </li>
+        {% if request.user.is_active %}
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+              role="button" aria-expanded="false">
+              <Strong>Profile</Strong></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+        {% else %}
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+              role="button" aria-expanded="false">
+              <Strong>Log In</Strong></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'login' %}">Log In</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item"
+               href="{% url 'django_registration_register' %}">Register</a></li>
+            </ul>
+          </li>
+        {% endif %}
       </ul>
-      
     </div>
   </div>
   </nav>
