@@ -23,6 +23,11 @@
     <input type="hidden" name="next" value="{{ next }}">
     </form>
     <p><a href="{% url 'password_reset' %}">Lost Password?</a></p>
+    <div class="card">
+      <div class="card-body" style="width: 36rem;">
+        <a href="{% url 'google_login' %}">Login With Google</a>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
