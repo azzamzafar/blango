@@ -56,6 +56,7 @@ class Dev(Configuration):
     # Application definition
 
     INSTALLED_APPS = [
+        'debug_toolbar',
         'blango_auth',
         'django.contrib.admin',
         'django.contrib.auth',
@@ -75,6 +76,7 @@ class Dev(Configuration):
 
 
     MIDDLEWARE = [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -213,6 +215,8 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    # ip values for debug toolbar visibility
+    INTERNAL_IPS = ["192.168.10.93","192.168.10.226"]
 
 class Prod(Dev):
   DEBUG = False

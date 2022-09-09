@@ -19,6 +19,7 @@ from django.conf import settings
 
 from django_registration.backends.activation.views import RegistrationView
 from blango_auth.forms import BlangoRegistrationForm
+import debug_toolbar
 
 
 urlpatterns = [
@@ -37,3 +38,7 @@ urlpatterns = [
 ]
 
 print(f"Time zone: {settings.TIME_ZONE}")
+if settings.DEBUG:
+  urlpatterns+=[
+    path("__debug__/", include(debug_toolbar.urls)),
+  ]

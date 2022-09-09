@@ -2,5 +2,6 @@ crispy_bootstrap5
 django-configurations
 dj-database-url
 django[argon2]
-
+django-registration
 django-allauth
+django-debug-toolbar
