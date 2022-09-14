@@ -16,7 +16,7 @@ def get_ip(request):
 def index(request):
   posts = (Post.objects.filter(published_at__lte=timezone.now())
   .order_by("-published_at")
-  .select_related("author")
+  .select_related("author"))
   
   logger.debug("Got %d posts", len(posts))
   return render(request, "blog/index.html",{"posts": posts})
