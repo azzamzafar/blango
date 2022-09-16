@@ -5,3 +5,4 @@ django[argon2]
 django-registration
 django-allauth
 django-debug-toolbar
+djangorestframework
