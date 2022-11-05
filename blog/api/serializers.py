@@ -1,8 +1,27 @@
 from rest_framework import serializers
-from blog.models import Post,Tag
+from blog.models import Post,Tag, Comment
 from blango_auth.models import User
-from django.utils.text import slugify
 
+
+class TagSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Tag
+    fields = "__all__"
+    
+
+class UserSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = ["first_name", "last_name", "email"]
+
+class CommentSerializer(serializers.ModelSerializer):
+  id = serializers.IntegerField(required=False)
+  creator = UserSerializer(read_only=True)
+  
+  class Meta:
+    model = Comment
+    fields = ["id","createor","content","modified_at","created_at"]
+    read_only = ["modified_at", "created_at"]
 
 class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(required=False)  
@@ -31,7 +50,17 @@ class PostSerializer(serializers.ModelSerializer):
       del data["autogenerate_slug"]
       return data
 
-class UserSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = User
-    fields = ["first_name", "last_name", "email"]
+class PostDetailSerializer(PostSerializer):
+  comments = CommentSerializer(many=True)
+  
+  def update(self, instance, validated_data):
+    comments = validated_data.pop("comments")
+    instance = super(PostDetailSerializer,self).update(instance, validated_data)
+    for comment_data in comments:
+      if comment_data.get("id"):
+        continue
+      comment = Comment(**comment_data)
+      comment.creator = self.context['request'].user
+      comment.content_object = instance
+      comment.save()
+    return instance
