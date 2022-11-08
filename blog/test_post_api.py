@@ -5,8 +5,8 @@ from django.utils import timezone
 from pytz import UTC
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
-
 from blog.models import Post
+# import json
 
 
 class PostApiTestCase(TestCase):
@@ -45,14 +45,15 @@ class PostApiTestCase(TestCase):
 
 
   def test_post_list(self):
-    resp = self.client.get("/api/v1/posts")
+    resp = self.client.get("/api/v1/posts/")
+    
     data = resp.json()
     self.assertEqual(len(data), 2)
 
     for post_dict in data:
       # Get post object from model using id-post
       # keyi-value stored in post_lookup
-      post_obj = self.post_lookup[post_dic["id"]]
+      post_obj = self.post_lookup[post_dict["id"]]
       # Test by matching it with data in response
 
       self.assertEqual(post_obj.title,post_dict["title"])
